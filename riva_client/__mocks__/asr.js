@@ -3,29 +3,29 @@
  * SPDX-License-Identifier: MIT
  */
 
+const languageCode = require("../../const");
+
 // simple mock of asr grpc client.
 
-const asr = jest.createMockFromModule('../asr');
+const asr = jest.createMockFromModule("../asr");
 
 class RivaASRClient {
+  recognizeStream = {
+    write: function (data) {
+      return true;
+    },
+  };
+  setupASR(
+    sampleRateHz = 1600,
+    languageCode = languageCode,
+    encoding = 2,
+    maxAlts = 1,
+    punctuate = true
+  ) {}
 
-    recognizeStream = {
-        write: function(data) {
-            return true;
-        }
-    }
-    setupASR(sampleRateHz = 1600,
-             languageCode ='en-US',
-             encoding = 2,
-             maxAlts = 1,
-             punctuate = true) {
-    };
-
-    mainASR(cb) {
-        cb({'test' : 'output'});
-    }
-
-
+  mainASR(cb) {
+    cb({ test: "output" });
+  }
 }
 
 module.exports = RivaASRClient;

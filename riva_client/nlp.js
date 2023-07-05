@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-
 require('dotenv').config({ path: 'env.txt' });
+const languageCode = require('../const');
 
-const languageCode = 'en-US';
+

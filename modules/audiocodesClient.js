@@ -13,6 +13,7 @@
 
 const WebSocket = require('ws');
 const fs = require('fs');
+const languageCode = require('../const');
 
 let rawWav = fs.readFileSync("./dualstream.pcm");
 let ws_server = 'wss://localhost:8009';
@@ -21,7 +22,7 @@ var ws = new WebSocket(ws_server, {rejectUnauthorized: false});
 let count = 0;
 ws.on('open', async function start() {
     console.log("connected to server");
-    start_asr = { "type": "start", "language": "en-US", "format": "raw", "encoding": "LINEAR16", "sampleRateHz": 16000 };
+    start_asr = { "type": "start", "language": languageCode, "format": "raw", "encoding": "LINEAR16", "sampleRateHz": 16000 };
     ws.send(JSON.stringify(start_asr));
 });
 ws.on('close', function (result) {

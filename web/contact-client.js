@@ -1,7 +1,9 @@
+const languageCode = 'hi-IN';
 /*
  * SPDX-FileCopyrightText: Copyright (c) 2022 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
  * SPDX-License-Identifier: MIT
  */
+
 
 const id = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
 const resampleWorker = './resampler.js';
@@ -67,7 +69,7 @@ function startRivaService() {
 
         websocket.addEventListener('open', function (evt) {
             console.log('WebSocket Client Connected');
-            start_asr = { "type": "start", "language": "en-US", "format": "raw", "encoding": "LINEAR16", "sampleRateHz": 16000 };
+            start_asr = { "type": "start", "language": languageCode, "format": "raw", "encoding": "LINEAR16", "sampleRateHz": 16000 };
             console.log(JSON.stringify(start_asr));
             websocket.send(JSON.stringify(start_asr));
         });
